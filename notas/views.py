@@ -1,5 +1,10 @@
 from django.shortcuts import HttpResponse
+from notas.models import Nota
 
-def inicio(request):
-    return HttpResponse("<h1>Bienvenido a la página de inicio de Notas <footer><p>&copy; 226 Mi App.</p></footer></h1>")
+def index(request):
+    notas = Nota.objects.count()
+    return HttpResponse(
+        f"<h1>Notas</h1><p>Total de notas: {notas}</p>"
+        f"<footer><p>Desarrollado por: Tu Nombre</p></footer>"
+    )
     
